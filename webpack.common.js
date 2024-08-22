@@ -2,11 +2,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: "development",
   entry: {
     index: "./src/index.js",
   },
-  devtool: "inline-source-map",
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
@@ -19,6 +17,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
